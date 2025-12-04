@@ -13,12 +13,12 @@ foreach ($lines as $line) {
 
     $indexOfFirstMaxNumber = array_search($maxNumber, $numbers);
     $numbersBefore = array_map('intval', str_split(substr($line, 0, $indexOfFirstMaxNumber)));
-    $numbersAfter = array_map('intval', str_split(substr($line, $indexOfFirstMaxNumber)));
+    $numbersAfter = array_map('intval', str_split(substr($line, $indexOfFirstMaxNumber - 1)));
 
     if (count($numbersAfter)) {
         $joltage .= max($numbersAfter);
     } else {
-        $joltage .= max($numbersBefore);
+        $joltage = $joltage . max($numbersBefore);
     }
     $totalJoltage += intval($joltage);
 }
